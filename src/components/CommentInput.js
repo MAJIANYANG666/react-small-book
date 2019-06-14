@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
-import wrapWithLoadData from './wrapWithLoadData'
+// import wrapWithLoadData from '../wrapWithLoadData'
 import PropTypes from 'prop-types'
 
 class CommentInput extends Component {
   static propTypes = {
     onSubmit: PropTypes.func,
-    data: PropTypes.any,
-    savaData: PropTypes.func.isRequired,
+    username: PropTypes.any,
+    onUserNameInputBlur: PropTypes.func
   }
   state = {
-    username: this.props.data || '',
+    username: this.props.username || '',
     content: ''
   }
   // componentWillMount() {
@@ -53,8 +53,10 @@ class CommentInput extends Component {
     })
   }
   handleUsernameBlur(event) {
-    // this._saveUsername(event.target.value)
-    this.props.saveData(event.target.value)
+    if( this.props.onUserNameInputBlur) {
+      this.props.onUserNameInputBlur(event.target.value)
+    }
+    
   }
   
   render() {
@@ -81,5 +83,5 @@ class CommentInput extends Component {
     )
   }
 }
-CommentInput = wrapWithLoadData(CommentInput, 'username')
+// CommentInput = wrapWithLoadData(CommentInput, 'username')
 export default CommentInput
