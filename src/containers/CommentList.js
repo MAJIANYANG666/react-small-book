@@ -53,7 +53,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     initComments: (comments) => {
       dispatch(initComments(comments))
     },
-    onDeleteComments: (commentIndex) => {
+    onDeleteComment: (commentIndex) => {
       dispatch(deleteComment(commentIndex))
     },
   }
